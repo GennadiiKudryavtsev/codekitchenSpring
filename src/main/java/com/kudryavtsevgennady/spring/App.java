@@ -1,14 +1,16 @@
 package com.kudryavtsevgennady.spring;
 
+import com.kudryavtsevgennady.spring.config.PetConfiguration;
+import com.kudryavtsevgennady.spring.config.VehicleConfiguration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("com.kudryavtsevgennady.spring");
-        Vehicle vehicle = context.getBean("car", Vehicle.class);
-        vehicle.startEngine();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
+        Person person = context.getBean("person", Person.class);
+        person.startVehicleEngine();
+        person.callPet();
         context.close();
-        System.out.println("Program is finished");
 
     }
 }
